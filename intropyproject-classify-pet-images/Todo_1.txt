@@ -1,0 +1,58 @@
+### Explanation of Changes
+
+1. **Added Argparse Import**: 
+   Imported the `argparse` module to handle command line arguments.
+
+   ```python
+   import argparse
+   ```
+
+2. **Defined get_input_args Function**: 
+   Created the `get_input_args` function to parse command line arguments.
+
+3. **Created Argument Parser**: 
+   Initialized the ArgumentParser object.
+
+   ```python
+   parser = argparse.ArgumentParser()
+   ```
+
+4. **Added Arguments**: 
+   Used the `add_argument` method to add three command line arguments:
+   - `--dir` for the directory containing pet images, with a default value of `'pet_images/'`.
+   - `--arch` for the CNN model architecture, with a default value of `'vgg'`.
+   - `--dogfile` for the file containing dog names, with a default value of `'dognames.txt'`.
+
+   ```python
+   parser.add_argument('--dir', type=str, default='pet_images/', 
+                       help='path to the folder of pet images') 
+   parser.add_argument('--arch', type=str, default='vgg', 
+                       help='CNN model architecture to use: resnet, alexnet, or vgg')
+   parser.add_argument('--dogfile', type=str, default='dognames.txt', 
+                       help='text file that contains dognames')
+   ```
+
+5. **Parsed Arguments**: 
+   Used the `parse_args` method to parse the arguments and return them.
+
+   ```python
+   return parser.parse_args()
+   ```
+
+### Testing the Changes
+
+1. **Default Values**: 
+   Run `check_images.py` without any arguments to ensure default values are used.
+
+   ```sh
+   python check_images.py
+   ```
+
+2. **Custom Values**: 
+   Run `check_images.py` with custom arguments to verify the correct values are printed.
+
+   ```sh
+   python check_images.py --dir custom_images/ --arch resnet --dogfile custom_dognames.txt
+   ```
+
+By making these changes, the program can now accept and process command line arguments for the directory of images, the CNN model architecture, and the dog names file, providing greater flexibility and usability.

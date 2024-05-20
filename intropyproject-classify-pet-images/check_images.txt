@@ -1,0 +1,11 @@
+Based on the provided information from the results files (`alexnet_uploaded-images.txt`, `resnet_uploaded-images.txt`, `vgg_uploaded-images.txt`), let's address each question:
+
+1. **Classify the breed of dog in Dog_01.jpg**: All three model architectures classified `Dog_01.jpg` as a dog (`d`), but it doesn't provide information about the specific breed predicted by each model. To determine if they classified the breed as the same, we would need to see the detailed classification results, which are not provided here.
+
+2. **Compare Dog_01.jpg and Dog_02.jpg classifications**: The provided information does not include the breed classifications for `Dog_02.jpg`. Therefore, we cannot compare the breed classifications of `Dog_01.jpg` and `Dog_02.jpg` across the three model architectures.
+
+3. **Classify Animal_Name_01.jpg and Object_Name_01.jpg**: The provided information doesn't include the classification results for `Animal_Name_01.jpg` and `Object_Name_01.jpg`. Therefore, we cannot determine if the model architectures correctly classified them as not being dogs.
+
+4. **Select the best model architecture**: Without detailed classification results for each image and comparison across model architectures, it's challenging to determine which model architecture performed the best. However, based on the provided information, all three model architectures classified `Dog_01.jpg` and `Dog_02.jpg` as dogs, which indicates that they correctly identified the images as containing dogs. 
+
+To make a more informed decision about the best model architecture, we would need to analyze the detailed classification results, including the predicted breeds and the correctness of classifications for non-dog images. Once these details are available, we can compare the performance of each model architecture across all images and select the one that demonstrates the highest accuracy and consistency.

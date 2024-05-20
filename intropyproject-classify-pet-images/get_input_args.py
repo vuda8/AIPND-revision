@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/get_input_args.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:                                   
+# PROGRAMMER: Do Anh Vu
+# DATE CREATED: 2024-05-20
 # REVISED DATE: 
 # PURPOSE: Create a function that retrieves the following 3 command line inputs 
 #          from the user using the Argparse Python module. If the user fails to 
@@ -25,7 +25,7 @@ def get_input_args():
     """
     Retrieves and parses the 3 command line arguments provided by the user when
     they run the program from a terminal window. This function uses Python's 
-    argparse module to created and defined these 3 command line arguments. If 
+    argparse module to create and define these 3 command line arguments. If 
     the user fails to provide some or all of the 3 arguments, then the default 
     values are used for the missing arguments. 
     Command Line Arguments:
@@ -38,6 +38,20 @@ def get_input_args():
     Returns:
      parse_args() -data structure that stores the command line arguments object  
     """
-    # Replace None with parser.parse_args() parsed argument collection that 
-    # you created with this function 
-    return None
+    # Creates Argument Parser object named parser
+    parser = argparse.ArgumentParser()
+
+    # Argument 1: that's a path to a folder
+    parser.add_argument('--dir', type=str, default='pet_images/', 
+                        help='path to the folder of pet images') 
+
+    # Argument 2: CNN Model Architecture
+    parser.add_argument('--arch', type=str, default='vgg', 
+                        help='CNN model architecture to use: resnet, alexnet, or vgg')
+
+    # Argument 3: Text file with Dog Names
+    parser.add_argument('--dogfile', type=str, default='dognames.txt', 
+                        help='text file that contains dognames')
+
+    # Replace None with parser.parse_args() parsed argument collection 
+    return parser.parse_args()
