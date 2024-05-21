@@ -21,7 +21,7 @@
 #   Example call:
 #    python check_images_solution.py --dir pet_images/ --arch vgg --dogfile dognames.txt
 ##
-
+import argparse
 # Imports python modules
 from time import time, sleep
 
@@ -31,6 +31,7 @@ from print_functions_for_lab_checks import check_command_line_arguments, check_c
 # Imports functions created for this program
 from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
+from classifier import classifier
 from classify_images import classify_images
 from adjust_results4_isadog import adjust_results4_isadog
 from calculates_results_stats import calculates_results_stats
@@ -41,23 +42,29 @@ def main():
     # Measures total program runtime by collecting start time
     start_time = time()
     
-    # Retrieve command line arguments
-    in_arg = get_input_args()
-    # Check command line arguments using in_arg  
-    check_command_line_arguments(in_arg)
+    # Parse command line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dir', type=str, default='pet_images/', help='path to the folder of pet images')
+    parser.add_argument('--arch', type=str, default='vgg', help='CNN model architecture to use for classification')
+    parser.add_argument('--dogfile', type=str, default='dognames.txt', help='text file with dog names')
+    
+    args = parser.parse_args()
+    
+    # Check command line arguments using args  
+    check_command_line_arguments(args)
 
     # Create pet image labels
-    results = get_pet_labels(in_arg.dir)
+    results = get_pet_labels(args.dir)
     # Check Pet Images in the results Dictionary
     check_creating_pet_image_labels(results)
 
     # Classify images and compare labels
-    classify_images(in_arg.dir, results, in_arg.arch)
+    classify_images(args.dir, results, args.arch)
     # Check Results Dictionary
     check_classifying_images(results)    
 
     # Adjust results to determine if classifier correctly classifies 'a dog' or 'not a dog'
-    adjust_results4_isadog(results, in_arg.dogfile)
+    adjust_results4_isadog(results, args.dogfile)
     # Check Results Dictionary for is-a-dog adjustment
     check_classifying_labels_as_dogs(results)
 
@@ -67,7 +74,7 @@ def main():
     check_calculating_results(results, results_stats)
 
     # Print results
-    print_results(results, results_stats, in_arg.arch, True, True)
+    print_results(results, results_stats, args.arch, True, True)
     
     # Measure total program runtime by collecting end time
     end_time = time()
@@ -80,4 +87,3 @@ def main():
 # Call to main function to run the program
 if __name__ == "__main__":
     main()
-
